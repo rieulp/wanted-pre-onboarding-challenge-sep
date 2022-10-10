@@ -1,0 +1,14 @@
+.title {
+  margin: 10px 0;
+}
+.date {
+  margin: 10px 0;
+  padding-left: 10px;
+  color: #999;
+  font-size: 14px;
+  align-items: center;
+  vertical-align: middle;
+}
+.markdown {
+  padding: 10px;
+}

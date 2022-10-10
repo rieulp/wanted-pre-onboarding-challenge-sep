@@ -1,0 +1,27 @@
+.itemWrapper {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.date {
+  margin: 0;
+  color: #999;
+  font-size: 14px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.description {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
