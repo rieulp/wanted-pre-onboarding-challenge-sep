@@ -5,7 +5,7 @@ categories:
   - Frontend
 date: '2022-10-11'
 description: 테스트 포스트입니다2.
-slug: test-post2
+slug: test2
 tags:
   - frontend
   - test
@@ -33,19 +33,18 @@ sponte dixit lacerti velocius! **Nostros ferax nec** aggere iussaque ad error
 iussa auro seu spissatus sinus, fuit, geri. Rabies vulnus aetherioque ramis
 videri velocibus vitamque. Dea iunctis divorum; qui moenia iam denique, mortis.
 
-    flood /= dragClipScrolling;
-    rteLeaderboard.thunderboltMap(pram.adf(servicesDrop, dualMultiSoftware(3,
-            url_cdfs), 17), controllerBandwidthAnimated(text_system_motion));
-    if (3 == methodCpm) {
-        commerceTwain.podcast_windows_iteration /= gifHocSurge / 3 + ipv;
-        sidebarPerl.rupServerWireless(retina, tweenKbpsInput(desktop),
-                mbrHyperlink);
-        jumperPupCompression.boot_mount_peopleware(w(balance),
-                atm_media_leopard);
-    } else {
-        target = 4;
-        storage_trojan_ntfs.dhcp(xp, soa, 1);
-    }
+```js
+flood /= dragClipScrolling;
+rteLeaderboard.thunderboltMap(pram.adf(servicesDrop, dualMultiSoftware(3, url_cdfs), 17), controllerBandwidthAnimated(text_system_motion));
+if (3 == methodCpm) {
+  commerceTwain.podcast_windows_iteration /= gifHocSurge / 3 + ipv;
+  sidebarPerl.rupServerWireless(retina, tweenKbpsInput(desktop), mbrHyperlink);
+  jumperPupCompression.boot_mount_peopleware(w(balance), atm_media_leopard);
+} else {
+  target = 4;
+  storage_trojan_ntfs.dhcp(xp, soa, 1);
+}
+```
 
 ## Vittis induitur et iungit ferar
 

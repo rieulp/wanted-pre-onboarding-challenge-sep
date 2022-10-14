@@ -2,17 +2,38 @@
 categories:
   - Development
   - Study
-  - Frontend
 date: '2022-10-10'
-description: 테스트 포스트입니다.
-slug: test-post
+description: 첫번째 포스트
+slug: test
 tags:
-  - frontend
-  - test
-title: 테스트 포스트입니다.
+  - first
+title: 첫번째 포스트
 ---
 
+```js
+const javascript = 'javascript';
+console.log(javascript);
+```
+
+|    Feature | Support              |
+| ---------: | :------------------- |
+| CommonMark | 100%                 |
+|        GFM | 100% w/ `remark-gfm` |
+
+~~strikethrough~~
+
+- [ ] task list
+- [x] checked item
+
+<blockquote>
+  👆 Use the toggle <br>above to add the plugin.
+</blockquote>
+
+[naver](https://www.naver.com/)
+
 # Nato curru sua
+
+🍕
 
 ## Ab premit natae flores clamavit utroque
 
