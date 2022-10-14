@@ -2,21 +2,29 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getPosts, IPost } from '../utils/post';
 import PostList from '../components/PostList';
 import Layout from '../layouts';
+import { SWRConfig } from 'swr';
 
-const Home = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
+interface ISWRFallback {
+  fallback: {
+    [key: string]: IPost[];
+  };
+}
+
+const Home = ({ fallback }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Layout>
-      <PostList posts={posts} />
-    </Layout>
+    <SWRConfig value={{ fallback }}>
+      <Layout>
+        <PostList />
+      </Layout>
+    </SWRConfig>
   );
 };
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<{ posts: IPost[] }> = async () => {
+export const getStaticProps: GetStaticProps<ISWRFallback> = async () => {
   const posts = await getPosts();
-
   return {
-    props: { posts },
+    props: { fallback: { '/api/post': posts } },
   };
 };

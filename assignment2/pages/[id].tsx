@@ -1,33 +1,36 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import ReactMarkdown from 'react-markdown';
-import Tags from '../components/Tags';
+import { SWRConfig } from 'swr';
+import PostContent from '../components/PostContent';
+import SiblingContent from '../components/SiblingContent';
 import Layout from '../layouts';
 import { getPost, getPosts, IPost } from '../utils/post';
-import styles from './styles.module.css';
 
 interface IParams extends ParsedUrlQuery {
   id: string;
 }
 
-interface IPostProps {
-  post: IPost;
+interface ISWRFallback {
+  fallback: {
+    [key: string]: IPost;
+  };
 }
-const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
+
+const Post = ({ fallback }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout>
-      <h1 className={styles.title}>{post.meta.title}</h1>
-      <p className={styles.date}>{post.meta.date}</p>
-      <Tags tags={post.meta.tags} />
-      <ReactMarkdown className={styles.markdown}>{post.content}</ReactMarkdown>
+      <SWRConfig value={fallback}>
+        <PostContent />
+        <SiblingContent />
+      </SWRConfig>
     </Layout>
   );
 };
 
-export const getStaticProps: GetStaticProps<IPostProps, IParams> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<ISWRFallback, IParams> = async ({ params }) => {
   const post = await getPost(params!.id);
   return {
-    props: { post },
+    props: { fallback: { [`/api/post/${params!.id}`]: post } },
   };
 };
 

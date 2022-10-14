@@ -24,16 +24,18 @@ export const getPosts = async (): Promise<IPost[]> => {
   const posts = fileNames.map(async (fileName) => {
     const filePath = path.join(postDirectory, fileName);
     const fileContents = await fs.readFile(filePath, 'utf-8');
-
     const content = fm<IPostMeta>(fileContents);
-
     return { fileName, meta: content.attributes, content: content.body };
   });
 
-  return await Promise.all(posts);
+  return (await Promise.all(posts)).sort(({ meta: meta1 }, { meta: meta2 }) => (new Date(meta1.date) < new Date(meta2.date) ? -1 : 1));
 };
 
-export const getPost = async (id: string) => {
-  const posts = await getPosts();
-  return posts.find(({ meta }) => meta.slug === id)!;
+export const getPost = async (id: string): Promise<IPost> => {
+  const postDirectory = path.join(process.cwd(), '__posts');
+  const fileName = `${id}.md`;
+  const filePath = path.join(postDirectory, fileName);
+  const fileContent = await fs.readFile(filePath, 'utf-8');
+  const content = fm<IPostMeta>(fileContent);
+  return { fileName, meta: content.attributes, content: content.body };
 };
