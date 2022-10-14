@@ -1,10 +1,11 @@
-import type { CodeComponent } from 'react-markdown/lib/ast-to-react';
+import type { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { BiCopy } from 'react-icons/bi';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula';
 import styles from './styles.module.css';
+import React from 'react';
 
-const CodeBlock: CodeComponent = ({ node, inline, className, children, ...props }) => {
+const CodeBlock = ({ node, inline, className, children, style, ...props }: CodeProps) => {
   const match = /language-(\w+)/.exec(className || '');
   return !inline && match ? (
     <div className={styles.codeBlock_container}>
