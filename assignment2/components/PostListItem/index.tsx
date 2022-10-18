@@ -6,13 +6,13 @@ export interface IPostListItemProps {
   title: string;
   date: string;
   description: string;
-  slug: string;
+  id: string;
   tags: string[];
   categories: string[];
 }
-const PostListItem = ({ title, date, description, slug, tags }: IPostListItemProps) => {
+const PostListItem = ({ title, date, description, id, tags }: IPostListItemProps) => {
   return (
-    <Link href={`/${slug}`}>
+    <Link href={`/${id}`} prefetch={false}>
       <a>
         <div className={styles.itemWrapper}>
           <h1 className={styles.title}>{title}</h1>

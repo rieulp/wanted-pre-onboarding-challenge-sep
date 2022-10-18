@@ -1,26 +1,31 @@
 import styles from './styles.module.css';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
-import { fetcher } from '../../utils/fetcher';
 import Tags from '../Tags';
-import type { IPost } from '../../utils/post';
-
 import remarkGfm from 'remark-gfm';
 import CodeBlock from '../CodeBlock';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import { fetchWithId } from '../../utils/fetcher';
+import { useEffect } from 'react';
+interface IPostContentProps {
+  onLoad?: () => void;
+}
 
-const PostContent = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  const { data } = useSWR<IPost>(id ? `/api/post/${id}` : null, fetcher, { dedupingInterval: 60000 });
+const PostContent = ({ onLoad }: IPostContentProps) => {
+  const { data: content } = useSWR(['/api/post', useRouter().query.id], fetchWithId, { dedupingInterval: 60000, revalidateOnFocus: false });
 
-  if (!data) return null;
+  useEffect(() => {
+    if (content && onLoad) onLoad();
+  }, [content, onLoad]);
+
+  if (!content) return null;
+
   return (
     <div className={styles.postContent_container}>
-      <h1 className={styles.title}>{data.meta.title}</h1>
-      <p className={styles.date}>{data.meta.date}</p>
-      <Tags tags={data.meta.tags} />
+      <h1 className={styles.title}>{content.meta.title}</h1>
+      <p className={styles.date}>{content.meta.date}</p>
+      <Tags tags={content.meta.tags} />
       <div className={styles.content}>
         <ReactMarkdown
           className={styles.markdown}
@@ -28,7 +33,7 @@ const PostContent = () => {
           rehypePlugins={[rehypeRaw]}
           components={{
             code: (props) => <CodeBlock {...props} />,
-            tr({ children, className }) {
+            tr({ children }) {
               return <tr>{children}</tr>;
             },
             blockquote({ children, className }) {
@@ -49,7 +54,7 @@ const PostContent = () => {
             },
           }}
         >
-          {data.content}
+          {content.content}
         </ReactMarkdown>
       </div>
     </div>

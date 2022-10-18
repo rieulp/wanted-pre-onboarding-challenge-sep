@@ -24,6 +24,7 @@ export default Home;
 
 export const getStaticProps: GetStaticProps<ISWRFallback> = async () => {
   const posts = await getPosts();
+
   return {
     props: { fallback: { '/api/post': posts } },
   };

@@ -4,7 +4,7 @@ categories:
   - Study
 date: '2022-10-10'
 description: 첫번째 포스트
-slug: test
+id: test
 tags:
   - first
 title: 첫번째 포스트

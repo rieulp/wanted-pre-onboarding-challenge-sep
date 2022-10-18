@@ -5,7 +5,7 @@ categories:
   - Frontend
 date: '2022-10-11'
 description: 테스트 포스트입니다2.
-slug: test2
+id: test2
 tags:
   - frontend
   - test

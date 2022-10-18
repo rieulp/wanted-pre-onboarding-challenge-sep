@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './styles.module.css';
-import { BsGithub, BsFillHeartFill } from 'react-icons/bs';
+import { BsGithub } from 'react-icons/bs';
 
 interface IProps {
   children?: React.ReactNode;
@@ -10,7 +10,7 @@ const Layout = ({ children }: IProps) => {
     <div className={styles.container}>
       <header className={styles.header}>
         <div>
-          <Link href="/">
+          <Link href="/" prefetch={false}>
             <a>Blog</a>
           </Link>
         </div>
@@ -23,7 +23,6 @@ const Layout = ({ children }: IProps) => {
           </a>
         </div>
         <p>Rieul</p>
-        {/* </div> */}
       </footer>
     </div>
   );

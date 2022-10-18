@@ -1,15 +1,14 @@
-import { IPost } from '../../utils/post';
 import PostListItem from '../PostListItem';
 import styles from './styles.module.css';
-import useSWR from 'swr';
-import { fetcher } from '../../utils/fetcher';
+import usePosts from '../../hooks/usePosts';
 
 const PostList = () => {
-  const { data } = useSWR<IPost[]>('/api/post', fetcher, { dedupingInterval: 60000 });
-  if (!data) return null;
+  const { posts } = usePosts();
+
+  if (!posts) return null;
   return (
     <div className={styles.postItemContainer}>
-      {data.map(({ meta }, index) => {
+      {posts.map(({ meta }, index) => {
         return <PostListItem {...meta} key={index} />;
       })}
     </div>
