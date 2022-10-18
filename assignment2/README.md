@@ -1,6 +1,6 @@
 # 프리온보딩 프론트엔드 챌린지 과제2
 ## Next.js로 마크다운 블로그 만들기 (1/2)
-[보러가기](https://wanted-pre-onboarding-fe-challenge-sep-2.vercel.app/)
+[보러가기](https://wanted-pre-onboarding-fe-challenge-sep.vercel.app/)
 <aside>
 💡 Next.js로 마크다운으로 작성한 블로그를 정적 페이지(SSG)로 작성해주세요.
 
